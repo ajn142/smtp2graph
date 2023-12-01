@@ -38,8 +38,16 @@ for (const property in process.env) {
 }
 
 const config = {
+	// Secure Mode - enable TLS
+	SEC_MODE: false,
+	
 	// Listening Ports
-	PORT: 465,
+	if (SEC_MODE == true) {
+		PORT: 465,
+	}
+	else {
+		PORT: 25
+	}
 	HTTP_PORT: 8080,
 
 	// Microsoft Graph Creds
@@ -59,11 +67,18 @@ const config = {
 
 let sentMessages: Email[] = [];
 const smtpServer = new smtp.SMTPServer({
-	secure: true,
-	authOptional: true,
+	if (config.SEC_MODE == true) {
+		
+		secure: true,
+		authOptional: true,
 
-	key: fs.readFileSync('key.pem'),
-	cert: fs.readFileSync('cert.pem'),
+		key: fs.readFileSync('key.pem'),
+		cert: fs.readFileSync('cert.pem'),
+	}
+	else {
+		secure: false,
+		authOptional: true,
+	}
 	logger: true,
 
 	onData(stream, session, callback) {
