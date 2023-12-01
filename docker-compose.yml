@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: smtp2graph
+    container_name: smtp2graph
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - SEC_MODE=$SEC_MODE
+      PORT=$PORT
+      HTTP_PORT=$HTTP_PORT
+      CLIENT_ID=$CLIENT_ID
+      CLIENT_SECRET=$CLIENT_SECRET
+      TENANT_ID=$TENANT_ID
+      DEV_MODE=$DEV_MODE
+      WEB_SERVER=$WEB_SERVER
+      WEB_SERVER_MESSAGE_LIMIT=$WEB_SERVER_MESSAGE_LIMIT 
+    ports:
+      - "25:25"
+      - "8090:8090"
