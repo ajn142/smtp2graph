@@ -42,12 +42,12 @@ const config = {
 	SEC_MODE: false,
 	
 	// Listening Ports
-	if (SEC_MODE == true) {
-		PORT: 465,
-	}
-	else {
-		PORT: 25
-	}
+	//if (SEC_MODE:boolean == true) {
+	//	PORT: 465,
+	//}
+	//else {
+		PORT: 25,
+	//}
 	HTTP_PORT: 8080,
 
 	// Microsoft Graph Creds
@@ -67,18 +67,18 @@ const config = {
 
 let sentMessages: Email[] = [];
 const smtpServer = new smtp.SMTPServer({
-	if (config.SEC_MODE == true) {
+	//if (config.SEC_MODE == true) {
 		
-		secure: true,
-		authOptional: true,
+	//	secure: true,
+	//	authOptional: true,
 
-		key: fs.readFileSync('key.pem'),
-		cert: fs.readFileSync('cert.pem'),
-	}
-	else {
+	//	key: fs.readFileSync('key.pem'),
+	//	cert: fs.readFileSync('cert.pem'),
+	//}
+	//else {
 		secure: false,
 		authOptional: true,
-	}
+	//}
 	logger: true,
 
 	onData(stream, session, callback) {
