@@ -31,8 +31,8 @@ export const sendEmail = async (token: string, email: Email) => {
 					},
 					subject: email.subject,
 					body: {
-						contentType: 'HTML',
-						content: email.body,
+						contentType: ct,
+						content: cte,
 					},
 					toRecipients: email.to.map((address) => {
 						return {
