@@ -42,12 +42,7 @@ const config = {
 	SEC_MODE: false,
 	
 	// Listening Ports
-	//if (SEC_MODE:boolean == true) {
-	//	PORT: 465,
-	//}
-	//else {
-		PORT: 25,
-	//}
+	PORT: 25,
 	HTTP_PORT: 8080,
 
 	// Microsoft Graph Creds
