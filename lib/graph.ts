@@ -56,7 +56,7 @@ export const sendEmail = async (token: string, email: Email) => {
 						};
 					}) : undefined,
 					attachments: email.attachments ? email.attachments.map((attachment) => {
-						if (attachment.filename == "")) {
+						if (attachment.filename == "") {
 							return {
 								'@odata.type': '#microsoft.graph.fileAttachment',
 								name: attachment.contentId,
