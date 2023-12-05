@@ -56,12 +56,21 @@ export const sendEmail = async (token: string, email: Email) => {
 						};
 					}) : undefined,
 					attachments: email.attachments ? email.attachments.map((attachment) => {
-						return {
-							'@odata.type': '#microsoft.graph.fileAttachment',
-							name: attachment.filename,
-							contentType: attachment.contentType,
-							contentBytes: attachment.content.toString('base64'),
-						};
+						if (attachment.filename == "")) {
+							return {
+								'@odata.type': '#microsoft.graph.fileAttachment',
+								name: attachment.contentId,
+								contentType: attachment.contentType,
+								contentBytes: attachment.content.toString('base64'),
+							};	
+						} else {
+							return {
+								'@odata.type': '#microsoft.graph.fileAttachment',
+								name: attachment.filename,
+								contentType: attachment.contentType,
+								contentBytes: attachment.content.toString('base64'),
+							};
+						}
 					}) : undefined,
 				},
 				saveToSentItems: 'true',
