@@ -2,22 +2,14 @@
 
 Docker image for relaying mail from SMTP to the Microsoft Graph API. Uses node smtp-server and MS Graph sendMail.
 
--   _Attachment support coming soon_
+-   Attachments no larger than 3MB supported
 
 ## Deploy
 
 ```bash
-docker run -d \
-    -p 465:465 \
-    -p 8080:8080 \
-    -e CLIENT_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
-    -e CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \
-    -e TENANT_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
-    -e DEV_MODE=false \
-    -e WEB_SERVER=true \
-    -e WEB_SERVER_MESSAGE_LIMIT=50 \
-    --name=smtp2graph \
-    evantrow/smtp2graph:latest
+cp .env-example .env
+vim .env # Make any edits needed (e.g., your Graph API info
+docker compose up # I recommend not running detached until you've sent a test email, much easier to get logs while attached.
 ```
 
 <br/>
