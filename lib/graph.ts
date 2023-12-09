@@ -56,10 +56,10 @@ export const sendEmail = async (token: string, email: Email) => {
 						};
 					}) : undefined,
 					attachments: email.attachments ? email.attachments.map((attachment) => {
-						if (attachment.filename == "") {
+						if (!(Object.hasOwn(attachment, 'filename') && attachment.filename != "")) {
 							return {
 								'@odata.type': '#microsoft.graph.fileAttachment',
-								name: attachment.contentId,
+								name: attachment.cid,
 								contentType: attachment.contentType,
 								contentBytes: attachment.content.toString('base64'),
 							};	

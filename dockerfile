@@ -7,6 +7,7 @@ WORKDIR /app
 COPY package.json package.json
 COPY index.ts index.ts
 COPY types.ts types.ts
+COPY tsconfig.json tsconfig.json
 COPY lib lib
 
 # install deps
